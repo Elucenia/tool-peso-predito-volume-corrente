@@ -1,0 +1,164 @@
+{
+  "tool": {
+    "id": "peso-predito-volume-corrente",
+    "title": "Peso predito e volume corrente protetor",
+    "short": "Volume corrente de 6 mL/kg (ARDSNet)",
+    "desc": "Calcule o peso corporal predito pela altura e sexo (fórmula do ARDSNet) e o volume corrente protetor de 4 a 8 mL/kg para a ventilação mecânica.",
+    "lead": "Calcula o peso predito pela altura e pelo sexo, que é a referência para o volume corrente na ventilação protetora, e não o peso real.",
+    "spec": [
+      "medicina-intensiva",
+      "anestesiologia",
+      "medicina-de-emergencia",
+      "pneumologia"
+    ],
+    "tier": 1,
+    "fields": [
+      [
+        "sexo",
+        "Sexo",
+        "radio",
+        {
+          "opts": {
+            "M": "Masculino",
+            "F": "Feminino"
+          }
+        }
+      ],
+      [
+        "altura",
+        "Altura",
+        "num",
+        {
+          "min": 120,
+          "max": 220,
+          "unit": "cm",
+          "ph": "170"
+        }
+      ]
+    ],
+    "formula": "<p><strong>Peso predito</strong> (kg): homens = 50 + 0,91 × (altura em cm − 152,4); mulheres = 45,5 + 0,91 × (altura em cm − 152,4).</p><p><strong>Volume corrente</strong> = 6 mL × peso predito (faixa de 4 a 8 mL/kg).</p>",
+    "table": [
+      [
+        "Estratégia ARDSNet",
+        "Alvo"
+      ],
+      [
+        "Volume corrente inicial",
+        "6 mL/kg de peso predito (reduzir até 4 se necessário)"
+      ],
+      [
+        "Pressão de platô",
+        "≤ 30 cmH₂O"
+      ],
+      [
+        "Se platô &lt; 25 cmH₂O com VC &lt; 6 mL/kg",
+        "Pode-se aumentar o VC até 8 mL/kg"
+      ]
+    ],
+    "tips": [
+      "Nunca use o peso real para calcular o volume corrente: o tamanho do pulmão acompanha a altura e o sexo, não o peso. Em obesos, o peso real leva a volumes lesivos.",
+      "Meça a altura (ou estime pela envergadura ou altura do joelho) em vez de estimar a olho: erro de 10 cm muda o VC em cerca de 55 mL.",
+      "A ventilação protetora também reduz complicações pulmonares no centro cirúrgico: muitos anestesiologistas usam 6 a 8 mL/kg de peso predito mesmo sem SDRA.",
+      "Com VC reduzido, aumente a frequência respiratória (até 35 irpm) para controlar a PaCO₂; hipercapnia permissiva com pH ≥ 7,25 é aceitável."
+    ],
+    "sources": [
+      [
+        "Acute Respiratory Distress Syndrome Network. Ventilation with lower tidal volumes as compared with traditional tidal volumes for acute lung injury and the acute respiratory distress syndrome. N Engl J Med, 2000.",
+        "https://doi.org/10.1056/NEJM200005043421801"
+      ],
+      [
+        "Fan E et al. An Official American Thoracic Society/European Society of Intensive Care Medicine/Society of Critical Care Medicine Clinical Practice Guideline: Mechanical Ventilation in Adult Patients with Acute Respiratory Distress Syndrome. Am J Respir Crit Care Med, 2017.",
+        "https://doi.org/10.1164/rccm.201703-0548ST"
+      ]
+    ],
+    "cases": [
+      [
+        "Homem de 175 cm: 70,6 kg, VC 423 mL",
+        {
+          "sexo": "M",
+          "altura": 175
+        },
+        {
+          "raw": {
+            "pbw": 70.566,
+            "vt6": 423.4
+          },
+          "main": "423",
+          "level": "info",
+          "tol": 0.1
+        }
+      ],
+      [
+        "Mulher de 160 cm: 52,4 kg, VC 314 mL",
+        {
+          "sexo": "F",
+          "altura": 160
+        },
+        {
+          "raw": {
+            "pbw": 52.416,
+            "vt6": 314.5
+          },
+          "level": "info",
+          "tol": 0.1
+        }
+      ],
+      [
+        "Homem de 152,4 cm: 50 kg, VC 300 mL",
+        {
+          "sexo": "M",
+          "altura": 152.4
+        },
+        {
+          "raw": {
+            "pbw": 50,
+            "vt6": 300
+          },
+          "main": "300",
+          "level": "info"
+        }
+      ]
+    ],
+    "batch": "urgencia",
+    "kind": "Calculadora",
+    "config": null,
+    "areaId": "urgencia",
+    "clinicalReview": "pending",
+    "sourceReview": "pending",
+    "sourceFile": "app/content/ferramentas/urgencia.php",
+    "arithmeticTest": {
+      "status": "passed",
+      "testedAt": "2026-09-25",
+      "total": 3,
+      "passed": 3,
+      "failures": []
+    },
+    "independentArithmeticTest": {
+      "status": "not-tested",
+      "testedAt": null,
+      "total": 0,
+      "passed": 0,
+      "cases": []
+    }
+  },
+  "review": {
+    "id": "peso-predito-volume-corrente",
+    "status": "restricted",
+    "reason": "A saída principal é um ajuste ventilatório de 6 mL/kg, não apenas peso predito. O protocolo inclui elegibilidade, pressão de platô e acompanhamento. Suspender até revisão clínica ou separar um calculador estritamente antropométrico de PBW.",
+    "sourceUrl": "https://biolincc.nhlbi.nih.gov/studies/ardsnet/",
+    "sourceTitle": "NHLBI BioLINCC — ARDSNet ARMA/KARMA/LARMA",
+    "sourceDate": "Estudo ARMA 2000; página consultada em 2026-09-25",
+    "publisherRegion": "Estados Unidos / NIH NHLBI",
+    "checkedAt": "2026-09-25",
+    "clinicalValidation": "not-performed",
+    "reviewScope": "triagem por risco e finalidade da saída principal; sem validação clínica",
+    "suppressLegacyFormula": true,
+    "formulaOverride": "Peso predito: 50 (masculino) ou 45,5 (feminino) + 0,91 × (altura em cm − 152,4). Multiplicar por um volume/kg é somente um componente de protocolo ventilatório."
+  },
+  "sourceFile": {
+    "path": "app/content/ferramentas/urgencia.php",
+    "sha256": "b24f3a77383430c3f3463168e78e88341034b3108bd712f3613ae32672dc281c",
+    "bytes": 121059
+  },
+  "clinicalValidation": "not-performed"
+}

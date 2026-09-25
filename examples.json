@@ -1,0 +1,63 @@
+[
+  {
+    "label": "Homem de 175 cm: 70,6 kg, VC 423 mL",
+    "input": {
+      "sexo": "M",
+      "altura": 175
+    },
+    "expected": {
+      "raw": {
+        "pbw": 70.566,
+        "vt6": 423.4
+      },
+      "main": "423",
+      "level": "info",
+      "tol": 0.1
+    },
+    "originalInput": {
+      "sexo": "M",
+      "altura": 175
+    },
+    "expandedZeroOptions": []
+  },
+  {
+    "label": "Mulher de 160 cm: 52,4 kg, VC 314 mL",
+    "input": {
+      "sexo": "F",
+      "altura": 160
+    },
+    "expected": {
+      "raw": {
+        "pbw": 52.416,
+        "vt6": 314.5
+      },
+      "level": "info",
+      "tol": 0.1
+    },
+    "originalInput": {
+      "sexo": "F",
+      "altura": 160
+    },
+    "expandedZeroOptions": []
+  },
+  {
+    "label": "Homem de 152,4 cm: 50 kg, VC 300 mL",
+    "input": {
+      "sexo": "M",
+      "altura": 152.4
+    },
+    "expected": {
+      "raw": {
+        "pbw": 50,
+        "vt6": 300
+      },
+      "main": "300",
+      "level": "info"
+    },
+    "originalInput": {
+      "sexo": "M",
+      "altura": 152.4
+    },
+    "expandedZeroOptions": []
+  }
+]
