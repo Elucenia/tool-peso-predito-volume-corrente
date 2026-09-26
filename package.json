@@ -1,7 +1,7 @@
 {
   "name": "@elucenia/tool-peso-predito-volume-corrente",
   "version": "0.1.0",
-  "description": "Peso predito e volume corrente protetor · Elucenia: reprodução técnica de fórmula ou escore clínico, sem dependências, para navegador e Node.js.",
+  "description": "Peso predito e volume corrente protetor · ELUCENIA: reprodução técnica de fórmula ou escore clínico, sem dependências, para navegador e Node.js.",
   "keywords": [
     "elucenia",
     "medical-calculator",
