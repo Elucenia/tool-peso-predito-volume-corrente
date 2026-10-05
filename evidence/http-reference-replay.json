@@ -1,0 +1,788 @@
+{
+  "receipt": {
+    "file": "reports/review-20261005-completion/deploy-lock/r5-all-calculators-http-results.json",
+    "bytes": 7105457,
+    "sha256": "be450b3731f8b30a13e0b36bf1f2f579bce00de325c5622bc3e526235c1c79f7"
+  },
+  "build": {
+    "id": "RYDdJbZxqrM8sgoyKEQc-",
+    "standaloneServer": {
+      "file": "reports/review-20261005-completion/deploy-lock/r5-isolated-runtime/.next/standalone/server.js",
+      "sha256": "631d43264038e7aa367b5405041eb3706d73fd3366925a7ef17a07119cfa166e",
+      "bytes": 10457
+    },
+    "catalogPin": {
+      "file": "deliveries/elucenia-next-hostinger-r5/.next/server/pages/en/tools.json",
+      "sha256": "33917dfdae9bea59cae22bfca34eaef2a21046a832af98c1a8d2718075de63ec",
+      "bytes": 103793
+    }
+  },
+  "scope": {
+    "syntheticDataOnly": true,
+    "applicationModuleImports": 0,
+    "browserInteractions": 0,
+    "newIndependentOracles": 0,
+    "nativeSourceReferenceCases": 882,
+    "additionalDecimalCases": 4,
+    "clinicalApproval": false,
+    "professionalLanguageApproval": false,
+    "populationValidation": false,
+    "hostingerDeploymentVerified": false,
+    "actualHTTPExecution": true,
+    "standaloneNodeServer": true,
+    "nodeVersion": "v22.18.0",
+    "noNewClinicalOrProfessionalApproval": true,
+    "pubmedResourceIsNotCalculatorAndNotIncludedIn222": true,
+    "description": "All 882 existing reference cases across the 218 native calculators plus four existing Decimal50 examples, executed via HTTP against the final local r5 standalone build. Raw precise source-audit comparisons are transport regressions, not independent clinical or full-method validation."
+  },
+  "tool": {
+    "id": "peso-predito-volume-corrente",
+    "title": "Peso predito e conversão de volume",
+    "methodVersion": "ARDS Network 2000; PBW e conversão por coeficiente informado",
+    "implementationVersion": "peso-predito-volume-corrente@native-2026-10-04+ccaddb9f3fb5",
+    "sources": [
+      [
+        "ARDS Network · protocolo e expressão de PBW",
+        "https://jamanetwork.com/journals/jama/fullarticle/201986"
+      ],
+      [
+        "Acute Respiratory Distress Syndrome Network. Ventilation with lower tidal volumes as compared with traditional tidal volumes for acute lung injury and the acute respiratory distress syndrome. N Engl J Med, 2000.",
+        "https://doi.org/10.1056/NEJM200005043421801"
+      ],
+      [
+        "Fan E et al. An Official American Thoracic Society/European Society of Intensive Care Medicine/Society of Critical Care Medicine Clinical Practice Guideline: Mechanical Ventilation in Adult Patients with Acute Respiratory Distress Syndrome. Am J Respir Crit Care Med, 2017.",
+        "https://doi.org/10.1164/rccm.201703-0548ST"
+      ]
+    ],
+    "limits": "Resultado principal é PBW, não ajuste ventilatório. Não escolhe automaticamente 6 mL/kg; coeficiente, elegibilidade, pressões e titulação dependem do protocolo clínico.",
+    "sourceEditionEvidence": [
+      {
+        "citation": "ARDS Network · protocolo e expressão de PBW",
+        "url": "https://jamanetwork.com/journals/jama/fullarticle/201986",
+        "class": "existing-source-record-transcribed",
+        "declaredCitationPreserved": true,
+        "sourceIdentityRecheckedInThisNormalization": false,
+        "publicationEditionConfirmationInThisNormalization": "not-performed",
+        "fullTextRetrievalInThisNormalization": false,
+        "formulaConformance": "not-assessed"
+      },
+      {
+        "citation": "Acute Respiratory Distress Syndrome Network. Ventilation with lower tidal volumes as compared with traditional tidal volumes for acute lung injury and the acute respiratory distress syndrome. N Engl J Med, 2000.",
+        "url": "https://doi.org/10.1056/NEJM200005043421801",
+        "class": "existing-source-record-transcribed",
+        "declaredCitationPreserved": true,
+        "sourceIdentityRecheckedInThisNormalization": false,
+        "publicationEditionConfirmationInThisNormalization": "not-performed",
+        "fullTextRetrievalInThisNormalization": false,
+        "formulaConformance": "not-assessed"
+      },
+      {
+        "citation": "Fan E et al. An Official American Thoracic Society/European Society of Intensive Care Medicine/Society of Critical Care Medicine Clinical Practice Guideline: Mechanical Ventilation in Adult Patients with Acute Respiratory Distress Syndrome. Am J Respir Crit Care Med, 2017.",
+        "url": "https://doi.org/10.1164/rccm.201703-0548ST",
+        "class": "existing-source-record-transcribed",
+        "declaredCitationPreserved": true,
+        "sourceIdentityRecheckedInThisNormalization": false,
+        "publicationEditionConfirmationInThisNormalization": "not-performed",
+        "fullTextRetrievalInThisNormalization": false,
+        "formulaConformance": "not-assessed"
+      }
+    ],
+    "calculator": {
+      "file": "deliveries/elucenia-next-hostinger-r5/private/tool-code/peso-predito-volume-corrente/calculator.js",
+      "sha256": "ccaddb9f3fb56b00b1ce604b155cf5283ee7c32aa9c01e8881c87319975428c5",
+      "bytes": 517
+    },
+    "cases": 3,
+    "clinicalApproval": false,
+    "professionalLanguageApproval": false,
+    "replayed": 3,
+    "passed": 3,
+    "failed": 0,
+    "status": "passed"
+  },
+  "results": [
+    {
+      "id": "peso-predito-volume-corrente",
+      "kind": "native-source-reference",
+      "index": 0,
+      "name": "Vetor sintético principal de referência",
+      "originalInput": {
+        "sexo": "M",
+        "altura": 170,
+        "mlkg": 6
+      },
+      "input": {
+        "sexo": "M",
+        "altura": 170,
+        "mlkg": 6
+      },
+      "amendments": [],
+      "expected": {
+        "raw": {
+          "pbw": 66.016,
+          "volume": 396.096,
+          "mlkg": 6
+        },
+        "main": "66,02",
+        "tol": 1e-9
+      },
+      "recordedResult": {
+        "main": [
+          "66,02",
+          "kg"
+        ],
+        "label": "Peso corporal predito",
+        "raw": {
+          "pbw": 66.01599999999999,
+          "volume": 396.09599999999995,
+          "mlkg": 6
+        }
+      },
+      "provenance": {
+        "bank": {
+          "file": "reports/review-20261003/source-cases-audit.json",
+          "sha256": "da6d27d65bcaed56528da83bd0ffaa3d407fc467ea7f9cb67ec40a1a78c6febf",
+          "bytes": 885399
+        },
+        "canonical": {
+          "file": "deliveries/elucenia-next-hostinger-r5/private/canonical-medical-tools.json",
+          "sha256": "988c58b5409ecc0df7e05193d88c7df930af9ce187b0688534a31f6d627ee4ad",
+          "bytes": 29045565
+        },
+        "scope": "Existing recorded source expectations and precise source-audit transport baseline; no newly derived independent oracle"
+      },
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:3062/api/tools/peso-predito-volume-corrente/calculate",
+        "origin": "http://127.0.0.1:3062",
+        "payload": {
+          "input": {
+            "sexo": "M",
+            "altura": 170,
+            "mlkg": 6
+          }
+        }
+      },
+      "attempts": [
+        {
+          "url": "http://127.0.0.1:3062/api/tools/peso-predito-volume-corrente/calculate",
+          "startedAt": "2026-10-05T15:16:19.580Z",
+          "status": 200,
+          "headers": {
+            "contentType": "application/json; charset=utf-8",
+            "retryAfter": null,
+            "cacheControl": "no-store",
+            "nosniff": "nosniff"
+          },
+          "body": {
+            "result": {
+              "id": "peso-predito-volume-corrente",
+              "main": [
+                "66,02",
+                "kg"
+              ],
+              "label": "Peso corporal predito",
+              "raw": {
+                "pbw": 66.01599999999999,
+                "volume": 396.09599999999995,
+                "mlkg": 6
+              },
+              "methodVersion": "ARDS Network 2000; PBW e conversão por coeficiente informado",
+              "clinicalValidation": "not-performed"
+            }
+          },
+          "responseSha256": "ced8b449b9f4da52a2b022936e81fb870310609d12d9ac2ce41a7a754b700b28",
+          "bytes": 288,
+          "elapsedMs": 2.579700000002049
+        }
+      ],
+      "observed": {
+        "url": "http://127.0.0.1:3062/api/tools/peso-predito-volume-corrente/calculate",
+        "startedAt": "2026-10-05T15:16:19.580Z",
+        "status": 200,
+        "headers": {
+          "contentType": "application/json; charset=utf-8",
+          "retryAfter": null,
+          "cacheControl": "no-store",
+          "nosniff": "nosniff"
+        },
+        "body": {
+          "result": {
+            "id": "peso-predito-volume-corrente",
+            "main": [
+              "66,02",
+              "kg"
+            ],
+            "label": "Peso corporal predito",
+            "raw": {
+              "pbw": 66.01599999999999,
+              "volume": 396.09599999999995,
+              "mlkg": 6
+            },
+            "methodVersion": "ARDS Network 2000; PBW e conversão por coeficiente informado",
+            "clinicalValidation": "not-performed"
+          }
+        },
+        "responseSha256": "ced8b449b9f4da52a2b022936e81fb870310609d12d9ac2ce41a7a754b700b28",
+        "bytes": 288,
+        "elapsedMs": 2.579700000002049
+      },
+      "evaluation": {
+        "checks": [
+          {
+            "at": "status",
+            "expected": 200,
+            "obtained": 200,
+            "passed": true
+          },
+          {
+            "at": "result-object",
+            "expected": true,
+            "obtained": true,
+            "passed": true
+          },
+          {
+            "at": "result.main",
+            "expected": "66,02",
+            "obtained": "66,02",
+            "scope": "Recorded source reference",
+            "passed": true
+          },
+          {
+            "at": "result.raw.pbw",
+            "expected": 66.016,
+            "obtained": 66.01599999999999,
+            "tolerance": 1e-9,
+            "difference": 1.4210854715202004e-14,
+            "scope": "Recorded rounded source reference",
+            "passed": true
+          },
+          {
+            "at": "result.raw.volume",
+            "expected": 396.096,
+            "obtained": 396.09599999999995,
+            "tolerance": 1e-9,
+            "difference": 5.684341886080802e-14,
+            "scope": "Recorded rounded source reference",
+            "passed": true
+          },
+          {
+            "at": "result.raw.mlkg",
+            "expected": 6,
+            "obtained": 6,
+            "tolerance": 1e-9,
+            "difference": 0,
+            "scope": "Recorded rounded source reference",
+            "passed": true
+          },
+          {
+            "at": "regression.result.raw.pbw",
+            "expected": 66.01599999999999,
+            "obtained": 66.01599999999999,
+            "tolerance": 1e-10,
+            "difference": 0,
+            "scope": "Existing precise source-audit transport regression, not independent formula validation",
+            "passed": true
+          },
+          {
+            "at": "regression.result.raw.volume",
+            "expected": 396.09599999999995,
+            "obtained": 396.09599999999995,
+            "tolerance": 3.960959999999999e-10,
+            "difference": 0,
+            "scope": "Existing precise source-audit transport regression, not independent formula validation",
+            "passed": true
+          },
+          {
+            "at": "regression.result.raw.mlkg",
+            "expected": 6,
+            "obtained": 6,
+            "tolerance": 1e-10,
+            "difference": 0,
+            "scope": "Existing precise source-audit transport regression, not independent formula validation",
+            "passed": true
+          },
+          {
+            "at": "regression.result.main.length",
+            "expected": 2,
+            "obtained": 2,
+            "scope": "Existing source-audit public representation regression",
+            "passed": true
+          },
+          {
+            "at": "regression.result.main[0]",
+            "expected": "66,02",
+            "obtained": "66,02",
+            "scope": "Existing source-audit public representation regression",
+            "passed": true
+          },
+          {
+            "at": "regression.result.main[1]",
+            "expected": "kg",
+            "obtained": "kg",
+            "scope": "Existing source-audit public representation regression",
+            "passed": true
+          }
+        ],
+        "notCompared": []
+      },
+      "status": "passed",
+      "error": null
+    },
+    {
+      "id": "peso-predito-volume-corrente",
+      "kind": "native-source-reference",
+      "index": 1,
+      "name": "Mulher152,4cm:45,5kg coef4",
+      "originalInput": {
+        "sexo": "F",
+        "altura": 152.4,
+        "mlkg": 4
+      },
+      "input": {
+        "sexo": "F",
+        "altura": 152.4,
+        "mlkg": 4
+      },
+      "amendments": [],
+      "expected": {
+        "raw": {
+          "pbw": 45.5,
+          "volume": 182,
+          "mlkg": 4
+        },
+        "main": "45,50"
+      },
+      "recordedResult": {
+        "main": [
+          "45,50",
+          "kg"
+        ],
+        "label": "Peso corporal predito",
+        "raw": {
+          "pbw": 45.5,
+          "volume": 182,
+          "mlkg": 4
+        }
+      },
+      "provenance": {
+        "bank": {
+          "file": "reports/review-20261003/source-cases-audit.json",
+          "sha256": "da6d27d65bcaed56528da83bd0ffaa3d407fc467ea7f9cb67ec40a1a78c6febf",
+          "bytes": 885399
+        },
+        "canonical": {
+          "file": "deliveries/elucenia-next-hostinger-r5/private/canonical-medical-tools.json",
+          "sha256": "988c58b5409ecc0df7e05193d88c7df930af9ce187b0688534a31f6d627ee4ad",
+          "bytes": 29045565
+        },
+        "scope": "Existing recorded source expectations and precise source-audit transport baseline; no newly derived independent oracle"
+      },
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:3062/api/tools/peso-predito-volume-corrente/calculate",
+        "origin": "http://127.0.0.1:3062",
+        "payload": {
+          "input": {
+            "sexo": "F",
+            "altura": 152.4,
+            "mlkg": 4
+          }
+        }
+      },
+      "attempts": [
+        {
+          "url": "http://127.0.0.1:3062/api/tools/peso-predito-volume-corrente/calculate",
+          "startedAt": "2026-10-05T15:16:19.892Z",
+          "status": 200,
+          "headers": {
+            "contentType": "application/json; charset=utf-8",
+            "retryAfter": null,
+            "cacheControl": "no-store",
+            "nosniff": "nosniff"
+          },
+          "body": {
+            "result": {
+              "id": "peso-predito-volume-corrente",
+              "main": [
+                "45,50",
+                "kg"
+              ],
+              "label": "Peso corporal predito",
+              "raw": {
+                "pbw": 45.5,
+                "volume": 182,
+                "mlkg": 4
+              },
+              "methodVersion": "ARDS Network 2000; PBW e conversão por coeficiente informado",
+              "clinicalValidation": "not-performed"
+            }
+          },
+          "responseSha256": "0c283eb2cb4da3f14679f53bab21ffaea4889ac1a4c0d12ad0c3a327bd356b3d",
+          "bytes": 260,
+          "elapsedMs": 6.378700000001118
+        }
+      ],
+      "observed": {
+        "url": "http://127.0.0.1:3062/api/tools/peso-predito-volume-corrente/calculate",
+        "startedAt": "2026-10-05T15:16:19.892Z",
+        "status": 200,
+        "headers": {
+          "contentType": "application/json; charset=utf-8",
+          "retryAfter": null,
+          "cacheControl": "no-store",
+          "nosniff": "nosniff"
+        },
+        "body": {
+          "result": {
+            "id": "peso-predito-volume-corrente",
+            "main": [
+              "45,50",
+              "kg"
+            ],
+            "label": "Peso corporal predito",
+            "raw": {
+              "pbw": 45.5,
+              "volume": 182,
+              "mlkg": 4
+            },
+            "methodVersion": "ARDS Network 2000; PBW e conversão por coeficiente informado",
+            "clinicalValidation": "not-performed"
+          }
+        },
+        "responseSha256": "0c283eb2cb4da3f14679f53bab21ffaea4889ac1a4c0d12ad0c3a327bd356b3d",
+        "bytes": 260,
+        "elapsedMs": 6.378700000001118
+      },
+      "evaluation": {
+        "checks": [
+          {
+            "at": "status",
+            "expected": 200,
+            "obtained": 200,
+            "passed": true
+          },
+          {
+            "at": "result-object",
+            "expected": true,
+            "obtained": true,
+            "passed": true
+          },
+          {
+            "at": "result.main",
+            "expected": "45,50",
+            "obtained": "45,50",
+            "scope": "Recorded source reference",
+            "passed": true
+          },
+          {
+            "at": "result.raw.pbw",
+            "expected": 45.5,
+            "obtained": 45.5,
+            "tolerance": 0.050000010000000004,
+            "difference": 0,
+            "scope": "Recorded rounded source reference",
+            "passed": true
+          },
+          {
+            "at": "result.raw.volume",
+            "expected": 182,
+            "obtained": 182,
+            "tolerance": 1e-8,
+            "difference": 0,
+            "scope": "Recorded rounded source reference",
+            "passed": true
+          },
+          {
+            "at": "result.raw.mlkg",
+            "expected": 4,
+            "obtained": 4,
+            "tolerance": 1e-8,
+            "difference": 0,
+            "scope": "Recorded rounded source reference",
+            "passed": true
+          },
+          {
+            "at": "regression.result.raw.pbw",
+            "expected": 45.5,
+            "obtained": 45.5,
+            "tolerance": 1e-10,
+            "difference": 0,
+            "scope": "Existing precise source-audit transport regression, not independent formula validation",
+            "passed": true
+          },
+          {
+            "at": "regression.result.raw.volume",
+            "expected": 182,
+            "obtained": 182,
+            "tolerance": 1.82e-10,
+            "difference": 0,
+            "scope": "Existing precise source-audit transport regression, not independent formula validation",
+            "passed": true
+          },
+          {
+            "at": "regression.result.raw.mlkg",
+            "expected": 4,
+            "obtained": 4,
+            "tolerance": 1e-10,
+            "difference": 0,
+            "scope": "Existing precise source-audit transport regression, not independent formula validation",
+            "passed": true
+          },
+          {
+            "at": "regression.result.main.length",
+            "expected": 2,
+            "obtained": 2,
+            "scope": "Existing source-audit public representation regression",
+            "passed": true
+          },
+          {
+            "at": "regression.result.main[0]",
+            "expected": "45,50",
+            "obtained": "45,50",
+            "scope": "Existing source-audit public representation regression",
+            "passed": true
+          },
+          {
+            "at": "regression.result.main[1]",
+            "expected": "kg",
+            "obtained": "kg",
+            "scope": "Existing source-audit public representation regression",
+            "passed": true
+          }
+        ],
+        "notCompared": []
+      },
+      "status": "passed",
+      "error": null
+    },
+    {
+      "id": "peso-predito-volume-corrente",
+      "kind": "native-source-reference",
+      "index": 2,
+      "name": "Homem152,4cm:50kg coef8",
+      "originalInput": {
+        "sexo": "M",
+        "altura": 152.4,
+        "mlkg": 8
+      },
+      "input": {
+        "sexo": "M",
+        "altura": 152.4,
+        "mlkg": 8
+      },
+      "amendments": [],
+      "expected": {
+        "raw": {
+          "pbw": 50,
+          "volume": 400,
+          "mlkg": 8
+        },
+        "main": "50,00"
+      },
+      "recordedResult": {
+        "main": [
+          "50,00",
+          "kg"
+        ],
+        "label": "Peso corporal predito",
+        "raw": {
+          "pbw": 50,
+          "volume": 400,
+          "mlkg": 8
+        }
+      },
+      "provenance": {
+        "bank": {
+          "file": "reports/review-20261003/source-cases-audit.json",
+          "sha256": "da6d27d65bcaed56528da83bd0ffaa3d407fc467ea7f9cb67ec40a1a78c6febf",
+          "bytes": 885399
+        },
+        "canonical": {
+          "file": "deliveries/elucenia-next-hostinger-r5/private/canonical-medical-tools.json",
+          "sha256": "988c58b5409ecc0df7e05193d88c7df930af9ce187b0688534a31f6d627ee4ad",
+          "bytes": 29045565
+        },
+        "scope": "Existing recorded source expectations and precise source-audit transport baseline; no newly derived independent oracle"
+      },
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:3062/api/tools/peso-predito-volume-corrente/calculate",
+        "origin": "http://127.0.0.1:3062",
+        "payload": {
+          "input": {
+            "sexo": "M",
+            "altura": 152.4,
+            "mlkg": 8
+          }
+        }
+      },
+      "attempts": [
+        {
+          "url": "http://127.0.0.1:3062/api/tools/peso-predito-volume-corrente/calculate",
+          "startedAt": "2026-10-05T15:16:20.204Z",
+          "status": 200,
+          "headers": {
+            "contentType": "application/json; charset=utf-8",
+            "retryAfter": null,
+            "cacheControl": "no-store",
+            "nosniff": "nosniff"
+          },
+          "body": {
+            "result": {
+              "id": "peso-predito-volume-corrente",
+              "main": [
+                "50,00",
+                "kg"
+              ],
+              "label": "Peso corporal predito",
+              "raw": {
+                "pbw": 50,
+                "volume": 400,
+                "mlkg": 8
+              },
+              "methodVersion": "ARDS Network 2000; PBW e conversão por coeficiente informado",
+              "clinicalValidation": "not-performed"
+            }
+          },
+          "responseSha256": "9baff3d48a61a4c8ecbe70e7938770027fc7b307ffd897f72e2b1b3722bde4db",
+          "bytes": 258,
+          "elapsedMs": 2.480100000015227
+        }
+      ],
+      "observed": {
+        "url": "http://127.0.0.1:3062/api/tools/peso-predito-volume-corrente/calculate",
+        "startedAt": "2026-10-05T15:16:20.204Z",
+        "status": 200,
+        "headers": {
+          "contentType": "application/json; charset=utf-8",
+          "retryAfter": null,
+          "cacheControl": "no-store",
+          "nosniff": "nosniff"
+        },
+        "body": {
+          "result": {
+            "id": "peso-predito-volume-corrente",
+            "main": [
+              "50,00",
+              "kg"
+            ],
+            "label": "Peso corporal predito",
+            "raw": {
+              "pbw": 50,
+              "volume": 400,
+              "mlkg": 8
+            },
+            "methodVersion": "ARDS Network 2000; PBW e conversão por coeficiente informado",
+            "clinicalValidation": "not-performed"
+          }
+        },
+        "responseSha256": "9baff3d48a61a4c8ecbe70e7938770027fc7b307ffd897f72e2b1b3722bde4db",
+        "bytes": 258,
+        "elapsedMs": 2.480100000015227
+      },
+      "evaluation": {
+        "checks": [
+          {
+            "at": "status",
+            "expected": 200,
+            "obtained": 200,
+            "passed": true
+          },
+          {
+            "at": "result-object",
+            "expected": true,
+            "obtained": true,
+            "passed": true
+          },
+          {
+            "at": "result.main",
+            "expected": "50,00",
+            "obtained": "50,00",
+            "scope": "Recorded source reference",
+            "passed": true
+          },
+          {
+            "at": "result.raw.pbw",
+            "expected": 50,
+            "obtained": 50,
+            "tolerance": 1e-8,
+            "difference": 0,
+            "scope": "Recorded rounded source reference",
+            "passed": true
+          },
+          {
+            "at": "result.raw.volume",
+            "expected": 400,
+            "obtained": 400,
+            "tolerance": 1e-8,
+            "difference": 0,
+            "scope": "Recorded rounded source reference",
+            "passed": true
+          },
+          {
+            "at": "result.raw.mlkg",
+            "expected": 8,
+            "obtained": 8,
+            "tolerance": 1e-8,
+            "difference": 0,
+            "scope": "Recorded rounded source reference",
+            "passed": true
+          },
+          {
+            "at": "regression.result.raw.pbw",
+            "expected": 50,
+            "obtained": 50,
+            "tolerance": 1e-10,
+            "difference": 0,
+            "scope": "Existing precise source-audit transport regression, not independent formula validation",
+            "passed": true
+          },
+          {
+            "at": "regression.result.raw.volume",
+            "expected": 400,
+            "obtained": 400,
+            "tolerance": 4e-10,
+            "difference": 0,
+            "scope": "Existing precise source-audit transport regression, not independent formula validation",
+            "passed": true
+          },
+          {
+            "at": "regression.result.raw.mlkg",
+            "expected": 8,
+            "obtained": 8,
+            "tolerance": 1e-10,
+            "difference": 0,
+            "scope": "Existing precise source-audit transport regression, not independent formula validation",
+            "passed": true
+          },
+          {
+            "at": "regression.result.main.length",
+            "expected": 2,
+            "obtained": 2,
+            "scope": "Existing source-audit public representation regression",
+            "passed": true
+          },
+          {
+            "at": "regression.result.main[0]",
+            "expected": "50,00",
+            "obtained": "50,00",
+            "scope": "Existing source-audit public representation regression",
+            "passed": true
+          },
+          {
+            "at": "regression.result.main[1]",
+            "expected": "kg",
+            "obtained": "kg",
+            "scope": "Existing source-audit public representation regression",
+            "passed": true
+          }
+        ],
+        "notCompared": []
+      },
+      "status": "passed",
+      "error": null
+    }
+  ],
+  "endBindings": true
+}

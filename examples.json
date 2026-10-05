@@ -1,63 +1,126 @@
 [
   {
-    "label": "Homem de 175 cm: 70,6 kg, VC 423 mL",
-    "input": {
-      "sexo": "M",
-      "altura": 175
-    },
-    "expected": {
-      "raw": {
-        "pbw": 70.566,
-        "vt6": 423.4
-      },
-      "main": "423",
-      "level": "info",
-      "tol": 0.1
-    },
+    "id": "peso-predito-volume-corrente",
+    "kind": "native-source-reference",
+    "index": 0,
+    "name": "Vetor sintético principal de referência",
     "originalInput": {
       "sexo": "M",
-      "altura": 175
+      "altura": 170,
+      "mlkg": 6
     },
-    "expandedZeroOptions": []
-  },
-  {
-    "label": "Mulher de 160 cm: 52,4 kg, VC 314 mL",
-    "input": {
-      "sexo": "F",
-      "altura": 160
-    },
-    "expected": {
-      "raw": {
-        "pbw": 52.416,
-        "vt6": 314.5
-      },
-      "level": "info",
-      "tol": 0.1
-    },
-    "originalInput": {
-      "sexo": "F",
-      "altura": 160
-    },
-    "expandedZeroOptions": []
-  },
-  {
-    "label": "Homem de 152,4 cm: 50 kg, VC 300 mL",
     "input": {
       "sexo": "M",
-      "altura": 152.4
+      "altura": 170,
+      "mlkg": 6
     },
+    "amendments": [],
+    "expected": {
+      "raw": {
+        "pbw": 66.016,
+        "volume": 396.096,
+        "mlkg": 6
+      },
+      "main": "66,02",
+      "tol": 1e-9
+    },
+    "recordedResult": {
+      "main": [
+        "66,02",
+        "kg"
+      ],
+      "label": "Peso corporal predito",
+      "raw": {
+        "pbw": 66.01599999999999,
+        "volume": 396.09599999999995,
+        "mlkg": 6
+      }
+    },
+    "provenance": {
+      "receiptSha256": "be450b3731f8b30a13e0b36bf1f2f579bce00de325c5622bc3e526235c1c79f7",
+      "scope": "Existing documented synthetic reference and precise source-audit regression baseline; no new independent oracle"
+    }
+  },
+  {
+    "id": "peso-predito-volume-corrente",
+    "kind": "native-source-reference",
+    "index": 1,
+    "name": "Mulher152,4cm:45,5kg coef4",
+    "originalInput": {
+      "sexo": "F",
+      "altura": 152.4,
+      "mlkg": 4
+    },
+    "input": {
+      "sexo": "F",
+      "altura": 152.4,
+      "mlkg": 4
+    },
+    "amendments": [],
+    "expected": {
+      "raw": {
+        "pbw": 45.5,
+        "volume": 182,
+        "mlkg": 4
+      },
+      "main": "45,50"
+    },
+    "recordedResult": {
+      "main": [
+        "45,50",
+        "kg"
+      ],
+      "label": "Peso corporal predito",
+      "raw": {
+        "pbw": 45.5,
+        "volume": 182,
+        "mlkg": 4
+      }
+    },
+    "provenance": {
+      "receiptSha256": "be450b3731f8b30a13e0b36bf1f2f579bce00de325c5622bc3e526235c1c79f7",
+      "scope": "Existing documented synthetic reference and precise source-audit regression baseline; no new independent oracle"
+    }
+  },
+  {
+    "id": "peso-predito-volume-corrente",
+    "kind": "native-source-reference",
+    "index": 2,
+    "name": "Homem152,4cm:50kg coef8",
+    "originalInput": {
+      "sexo": "M",
+      "altura": 152.4,
+      "mlkg": 8
+    },
+    "input": {
+      "sexo": "M",
+      "altura": 152.4,
+      "mlkg": 8
+    },
+    "amendments": [],
     "expected": {
       "raw": {
         "pbw": 50,
-        "vt6": 300
+        "volume": 400,
+        "mlkg": 8
       },
-      "main": "300",
-      "level": "info"
+      "main": "50,00"
     },
-    "originalInput": {
-      "sexo": "M",
-      "altura": 152.4
+    "recordedResult": {
+      "main": [
+        "50,00",
+        "kg"
+      ],
+      "label": "Peso corporal predito",
+      "raw": {
+        "pbw": 50,
+        "volume": 400,
+        "mlkg": 8
+      }
     },
-    "expandedZeroOptions": []
+    "provenance": {
+      "receiptSha256": "be450b3731f8b30a13e0b36bf1f2f579bce00de325c5622bc3e526235c1c79f7",
+      "scope": "Existing documented synthetic reference and precise source-audit regression baseline; no new independent oracle"
+    }
   }
 ]

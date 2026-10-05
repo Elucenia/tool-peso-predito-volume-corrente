@@ -1,17 +1,17 @@
 {
   "tool": {
     "id": "peso-predito-volume-corrente",
-    "title": "Peso predito e volume corrente protetor",
-    "short": "Volume corrente de 6 mL/kg (ARDSNet)",
-    "desc": "Calcule o peso corporal predito pela altura e sexo (fórmula do ARDSNet) e o volume corrente protetor de 4 a 8 mL/kg para a ventilação mecânica.",
-    "lead": "Calcula o peso predito pela altura e pelo sexo, que é a referência para o volume corrente na ventilação protetora, e não o peso real.",
+    "title": "Peso predito e conversão de volume",
+    "short": "Peso predito e volume pelo coeficiente explicitamente selecionado",
+    "desc": "Calcula o peso predito e converte um coeficiente de mL/kg informado em volume. O coeficiente deve ser definido no contexto clínico; a ferramenta não escolhe uma estratégia de ventilação.",
+    "lead": "Calcula o peso predito e converte um coeficiente de mL/kg informado em volume. O coeficiente deve ser definido no contexto clínico; a ferramenta não escolhe uma estratégia de ventilação.",
+    "kind": "Calculadora",
     "spec": [
       "medicina-intensiva",
       "anestesiologia",
       "medicina-de-emergencia",
       "pneumologia"
     ],
-    "tier": 1,
     "fields": [
       [
         "sexo",
@@ -34,34 +34,24 @@
           "unit": "cm",
           "ph": "170"
         }
+      ],
+      [
+        "mlkg",
+        "Volume por peso predito definido no protocolo",
+        "num",
+        {
+          "min": 4,
+          "max": 8,
+          "unit": "mL/kg"
+        }
       ]
     ],
-    "formula": "<p><strong>Peso predito</strong> (kg): homens = 50 + 0,91 × (altura em cm − 152,4); mulheres = 45,5 + 0,91 × (altura em cm − 152,4).</p><p><strong>Volume corrente</strong> = 6 mL × peso predito (faixa de 4 a 8 mL/kg).</p>",
-    "table": [
-      [
-        "Estratégia ARDSNet",
-        "Alvo"
-      ],
-      [
-        "Volume corrente inicial",
-        "6 mL/kg de peso predito (reduzir até 4 se necessário)"
-      ],
-      [
-        "Pressão de platô",
-        "≤ 30 cmH₂O"
-      ],
-      [
-        "Se platô &lt; 25 cmH₂O com VC &lt; 6 mL/kg",
-        "Pode-se aumentar o VC até 8 mL/kg"
-      ]
-    ],
-    "tips": [
-      "Nunca use o peso real para calcular o volume corrente: o tamanho do pulmão acompanha a altura e o sexo, não o peso. Em obesos, o peso real leva a volumes lesivos.",
-      "Meça a altura (ou estime pela envergadura ou altura do joelho) em vez de estimar a olho: erro de 10 cm muda o VC em cerca de 55 mL.",
-      "A ventilação protetora também reduz complicações pulmonares no centro cirúrgico: muitos anestesiologistas usam 6 a 8 mL/kg de peso predito mesmo sem SDRA.",
-      "Com VC reduzido, aumente a frequência respiratória (até 35 irpm) para controlar a PaCO₂; hipercapnia permissiva com pH ≥ 7,25 é aceitável."
-    ],
+    "formula": "<p>PBW = 50 + 0,91(altura−152,4) em homens ou 45,5 + 0,91(altura−152,4) em mulheres. Volume matemático = PBW × coeficiente informado.</p>",
     "sources": [
+      [
+        "ARDS Network · protocolo e expressão de PBW",
+        "https://jamanetwork.com/journals/jama/fullarticle/201986"
+      ],
       [
         "Acute Respiratory Distress Syndrome Network. Ventilation with lower tidal volumes as compared with traditional tidal volumes for acute lung injury and the acute respiratory distress syndrome. N Engl J Med, 2000.",
         "https://doi.org/10.1056/NEJM200005043421801"
@@ -73,83 +63,320 @@
     ],
     "cases": [
       [
-        "Homem de 175 cm: 70,6 kg, VC 423 mL",
+        "Vetor sintético principal de referência",
         {
           "sexo": "M",
-          "altura": 175
+          "altura": 170,
+          "mlkg": 6
         },
         {
           "raw": {
-            "pbw": 70.566,
-            "vt6": 423.4
+            "pbw": 66.016,
+            "volume": 396.096,
+            "mlkg": 6
           },
-          "main": "423",
-          "level": "info",
-          "tol": 0.1
+          "main": "66,02",
+          "tol": 1e-9
         }
       ],
       [
-        "Mulher de 160 cm: 52,4 kg, VC 314 mL",
+        "Mulher152,4cm:45,5kg coef4",
         {
           "sexo": "F",
-          "altura": 160
+          "altura": 152.4,
+          "mlkg": 4
         },
         {
           "raw": {
-            "pbw": 52.416,
-            "vt6": 314.5
+            "pbw": 45.5,
+            "volume": 182,
+            "mlkg": 4
           },
-          "level": "info",
-          "tol": 0.1
+          "main": "45,50"
         }
       ],
       [
-        "Homem de 152,4 cm: 50 kg, VC 300 mL",
+        "Homem152,4cm:50kg coef8",
         {
           "sexo": "M",
-          "altura": 152.4
+          "altura": 152.4,
+          "mlkg": 8
         },
         {
           "raw": {
             "pbw": 50,
-            "vt6": 300
+            "volume": 400,
+            "mlkg": 8
           },
-          "main": "300",
-          "level": "info"
+          "main": "50,00"
         }
       ]
     ],
-    "kind": "Calculadora",
-    "config": null,
-    "clinicalReview": "pending",
     "arithmeticTest": {
       "status": "passed",
-      "testedAt": "2026-09-25",
+      "testedAt": "2026-10-03",
       "total": 3,
       "passed": 3,
-      "failures": []
+      "failures": [],
+      "evidencePath": "reports/review-20261003/restored-methods-source-rules.json",
+      "scope": "Synthetic source-rule arithmetic checks. Independent clinical validation not performed."
     },
     "independentArithmeticTest": {
-      "status": "not-tested",
-      "testedAt": null,
-      "total": 0,
-      "passed": 0,
-      "cases": []
-    }
-  },
-  "review": {
-    "id": "peso-predito-volume-corrente",
-    "status": "restricted",
-    "reason": "A saída principal é um ajuste ventilatório de 6 mL/kg, não apenas peso predito. O protocolo inclui elegibilidade, pressão de platô e acompanhamento. Suspender até revisão clínica ou separar um calculador estritamente antropométrico de PBW.",
-    "sourceUrl": "https://biolincc.nhlbi.nih.gov/studies/ardsnet/",
-    "sourceTitle": "NHLBI BioLINCC — ARDSNet ARMA/KARMA/LARMA",
-    "sourceDate": "Estudo ARMA 2000; página consultada em 2026-09-25",
-    "publisherRegion": "Estados Unidos / NIH NHLBI",
-    "checkedAt": "2026-09-25",
+      "status": "passed",
+      "testedAt": "2026-10-03",
+      "total": 16,
+      "passed": 16,
+      "evidencePath": "reports/review-20261003/restored-methods-source-rules.json",
+      "scope": "Independent expected values and source-rule boundary checks; not clinical approval.",
+      "sourceRowCount": 16,
+      "uniqueApiInputCount": 13,
+      "inputIdentity": {
+        "definition": "Distinct JSON input objects within each method after recursively sorting object keys; array order, numeric values and JSON value types preserved. Uses stored input/inputs before implicit default completion, numeric coercion or clinical feature interpretation. Identity across different methods is not collapsed. Repeated scenarios are retained and coverage status is unchanged.",
+        "audit": {
+          "file": "reports/review-20261003/independent-source-corpus-input-identity-audit-final25.json",
+          "sha256": "35d65e84c5608a5f572fce6837f0a8c101b2266f5d6eec32a3d60d2bb6b022ca"
+        },
+        "sourceRows": 16,
+        "uniqueApiInputs": 13,
+        "duplicateRows": 3,
+        "duplicates": [
+          {
+            "first": 7,
+            "repeat": 10,
+            "input": {
+              "sexo": "M",
+              "altura": null,
+              "mlkg": 6
+            }
+          },
+          {
+            "first": 3,
+            "repeat": 12,
+            "input": {
+              "sexo": "M",
+              "altura": 170,
+              "mlkg": null
+            }
+          },
+          {
+            "first": 3,
+            "repeat": 15,
+            "input": {
+              "sexo": "M",
+              "altura": 170,
+              "mlkg": null
+            }
+          }
+        ],
+        "coverageStatusUnchanged": true
+      },
+      "publicCandidateBankOmitted": true
+    },
+    "limits": "Resultado principal é PBW, não ajuste ventilatório. Não escolhe automaticamente 6 mL/kg; coeficiente, elegibilidade, pressões e titulação dependem do protocolo clínico.",
+    "methodVersion": "ARDS Network 2000; PBW e conversão por coeficiente informado",
+    "currentMethodSource": {
+      "title": "ARDS Network · protocolo e expressão de PBW",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/201986",
+      "version": "ARDS Network 2000; PBW e conversão por coeficiente informado",
+      "checkedAt": "2026-10-03",
+      "access": "author-scientific-publication"
+    },
+    "primaryVerification": {
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/201986",
+      "checked": "Publicação dos autores ARDS Network: peso predito de 50 kg em homens ou 45,5 kg em mulheres, mais 0,91 × (altura em cm − 152,4). Coeficiente do protocolo é informado pelo usuário; não se atribui automaticamente 6 mL/kg.",
+      "access": "author-scientific-publication"
+    },
     "clinicalValidation": "not-performed",
-    "reviewScope": "triagem por risco e finalidade da saída principal; sem validação clínica",
-    "suppressLegacyFormula": true,
-    "formulaOverride": "Peso predito: 50 (masculino) ou 45,5 (feminino) + 0,91 × (altura em cm − 152,4). Multiplicar por um volume/kg é somente um componente de protocolo ventilatório."
+    "languageReview": "not-performed",
+    "reviewStatus": "needs-review",
+    "implementationStatus": "available",
+    "versionEvidence": {
+      "status": "explicit-implemented-variant-and-existing-source-proofs-recorded",
+      "checkedAt": "2026-10-04T17:52:09.841Z",
+      "declaredMethodVersion": "ARDS Network 2000; PBW e conversão por coeficiente informado",
+      "implementedVariant": "PBW = 50 + 0,91(altura−152,4) em homens ou 45,5 + 0,91(altura−152,4) em mulheres. Volume matemático = PBW × coeficiente informado.",
+      "inputContract": {
+        "fields": [
+          {
+            "key": "sexo",
+            "label": "Sexo",
+            "type": "radio",
+            "optional": false,
+            "options": {
+              "M": "Masculino",
+              "F": "Feminino"
+            }
+          },
+          {
+            "key": "altura",
+            "label": "Altura",
+            "type": "num",
+            "min": 120,
+            "max": 220,
+            "unit": "cm",
+            "optional": false,
+            "options": null
+          },
+          {
+            "key": "mlkg",
+            "label": "Volume por peso predito definido no protocolo",
+            "type": "num",
+            "min": 4,
+            "max": 8,
+            "unit": "mL/kg",
+            "optional": false,
+            "options": null
+          }
+        ],
+        "hash": "f53667b7577ed593d150bf15c13be78588dce0eb87950ad97e89fbc7cb7841bc",
+        "hashInputDefinition": "SHA256 of UTF8 JSON.stringify({id:tool.id,fields:tool.fields,formula:tool.formula,config:tool.config||null}), preserving declared order/value types; not a hash of versionEvidence.inputContract.fields display projection."
+      },
+      "sourceEditions": [
+        {
+          "citation": "ARDS Network · protocolo e expressão de PBW",
+          "url": "https://jamanetwork.com/journals/jama/fullarticle/201986",
+          "class": "existing-source-record-transcribed",
+          "declaredCitationPreserved": true,
+          "sourceIdentityRecheckedInThisNormalization": false,
+          "publicationEditionConfirmationInThisNormalization": "not-performed",
+          "fullTextRetrievalInThisNormalization": false,
+          "formulaConformance": "not-assessed"
+        },
+        {
+          "citation": "Acute Respiratory Distress Syndrome Network. Ventilation with lower tidal volumes as compared with traditional tidal volumes for acute lung injury and the acute respiratory distress syndrome. N Engl J Med, 2000.",
+          "url": "https://doi.org/10.1056/NEJM200005043421801",
+          "class": "existing-source-record-transcribed",
+          "declaredCitationPreserved": true,
+          "sourceIdentityRecheckedInThisNormalization": false,
+          "publicationEditionConfirmationInThisNormalization": "not-performed",
+          "fullTextRetrievalInThisNormalization": false,
+          "formulaConformance": "not-assessed"
+        },
+        {
+          "citation": "Fan E et al. An Official American Thoracic Society/European Society of Intensive Care Medicine/Society of Critical Care Medicine Clinical Practice Guideline: Mechanical Ventilation in Adult Patients with Acute Respiratory Distress Syndrome. Am J Respir Crit Care Med, 2017.",
+          "url": "https://doi.org/10.1164/rccm.201703-0548ST",
+          "class": "existing-source-record-transcribed",
+          "declaredCitationPreserved": true,
+          "sourceIdentityRecheckedInThisNormalization": false,
+          "publicationEditionConfirmationInThisNormalization": "not-performed",
+          "fullTextRetrievalInThisNormalization": false,
+          "formulaConformance": "not-assessed"
+        }
+      ],
+      "existingSourceEvidence": {
+        "currentMethodSource": {
+          "title": "ARDS Network · protocolo e expressão de PBW",
+          "url": "https://jamanetwork.com/journals/jama/fullarticle/201986",
+          "version": "ARDS Network 2000; PBW e conversão por coeficiente informado",
+          "checkedAt": "2026-10-03",
+          "access": "author-scientific-publication"
+        },
+        "primaryVerification": {
+          "url": "https://jamanetwork.com/journals/jama/fullarticle/201986",
+          "checked": "Publicação dos autores ARDS Network: peso predito de 50 kg em homens ou 45,5 kg em mulheres, mais 0,91 × (altura em cm − 152,4). Coeficiente do protocolo é informado pelo usuário; não se atribui automaticamente 6 mL/kg.",
+          "access": "author-scientific-publication"
+        }
+      },
+      "editionRecordingScope": "The methodVersion and all previously recorded source access/edition proofs are transcribed unchanged. This technical normalization makes no new bibliographic/full-text/source-formula confirmation; named existing read scopes remain in existingSourceEvidence. A missing standardized container did not mean the method edition was missing.",
+      "publicationEditionConfirmationReevaluated": false,
+      "fullFormulaConformanceReviewed": false,
+      "formulaConformance": "Not established by technical hashes or metadata normalization; retain existing bounded source arithmetic and clinical review separately.",
+      "independentArithmetic": {
+        "status": "passed",
+        "testedAt": "2026-10-03",
+        "total": 16,
+        "passed": 16,
+        "evidencePath": "reports/review-20261003/restored-methods-source-rules.json",
+        "scope": "Independent expected values and source-rule boundary checks; not clinical approval.",
+        "sourceRowCount": 16,
+        "uniqueApiInputCount": 13,
+        "inputIdentity": {
+          "definition": "Distinct JSON input objects within each method after recursively sorting object keys; array order, numeric values and JSON value types preserved. Uses stored input/inputs before implicit default completion, numeric coercion or clinical feature interpretation. Identity across different methods is not collapsed. Repeated scenarios are retained and coverage status is unchanged.",
+          "audit": {
+            "file": "reports/review-20261003/independent-source-corpus-input-identity-audit-final25.json",
+            "sha256": "35d65e84c5608a5f572fce6837f0a8c101b2266f5d6eec32a3d60d2bb6b022ca"
+          },
+          "sourceRows": 16,
+          "uniqueApiInputs": 13,
+          "duplicateRows": 3,
+          "duplicates": [
+            {
+              "first": 7,
+              "repeat": 10,
+              "input": {
+                "sexo": "M",
+                "altura": null,
+                "mlkg": 6
+              }
+            },
+            {
+              "first": 3,
+              "repeat": 12,
+              "input": {
+                "sexo": "M",
+                "altura": 170,
+                "mlkg": null
+              }
+            },
+            {
+              "first": 3,
+              "repeat": 15,
+              "input": {
+                "sexo": "M",
+                "altura": 170,
+                "mlkg": null
+              }
+            }
+          ],
+          "coverageStatusUnchanged": true
+        },
+        "publicCandidateBankOmitted": true
+      },
+      "clinicalApproval": "not-performed",
+      "translationApproval": "not-performed",
+      "releaseApproval": "not-performed",
+      "professionalLanguageApproval": "not-performed",
+      "sourceRightsApproval": "not-performed",
+      "implementationHash": "ccaddb9f3fb56b00b1ce604b155cf5283ee7c32aa9c01e8881c87319975428c5",
+      "implementationHashScope": "Exact current calculator.js bytes, individually verified in three app mirrors. This is not a full dependency-closure hash.",
+      "technicalBindingHistory": [
+        {
+          "recordedAt": "2026-10-04T17:52:09.841Z",
+          "scope": "First standardized container; explicit existing methodVersion and source proof objects preserved.",
+          "priorStandardizedContainerPresent": false,
+          "priorImplementationVersion": null,
+          "explicitMethodVersion": "ARDS Network 2000; PBW e conversão por coeficiente informado",
+          "sourceEvidenceSha256": "4d4dafbe317283981ada239342fd366f5b1724f93d796d064a64018d39acb0bf",
+          "metadataAudit": {
+            "file": "reports/review-20261003/native-technical-bindings-audit-publication-final26.json",
+            "sha256": "e615fa3a42555f8fbeb4de8763893c3e981a73eae4c8c1994b33727e19ebd8c8"
+          }
+        }
+      ]
+    },
+    "implementationVersion": "peso-predito-volume-corrente@native-2026-10-04+ccaddb9f3fb5"
   },
-  "clinicalValidation": "not-performed"
+  "sourceToolSha256": "6145e5212ac61efb0726b4346485e0ec8192c7383b30a68585fd2dede4525783",
+  "omittedFullReferenceBanks": [
+    {
+      "at": "independentArithmeticTest.cases",
+      "rows": 16,
+      "sha256": "ce19286f15c326f59c17ea5117d479d23a5e902313d19a6b7f5eed5c1b1f2349",
+      "reason": "Full independent reference bank omitted from standalone public candidate; original evidence references retained"
+    },
+    {
+      "at": "versionEvidence.independentArithmetic.cases",
+      "rows": 16,
+      "sha256": "ce19286f15c326f59c17ea5117d479d23a5e902313d19a6b7f5eed5c1b1f2349",
+      "reason": "Embedded complete independent bank omitted; edition, scope and evidence references retained"
+    }
+  ],
+  "currentSource": {
+    "file": "apps/website/private/tool-code/peso-predito-volume-corrente/calculator.js",
+    "bytes": 517,
+    "sha256": "ccaddb9f3fb56b00b1ce604b155cf5283ee7c32aa9c01e8881c87319975428c5"
+  },
+  "clinicalValidation": "not-performed",
+  "professionalLanguageReview": "not-performed",
+  "sourceRightsApproval": "not-performed"
 }

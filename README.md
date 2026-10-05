@@ -1,61 +1,32 @@
-# Peso predito e volume corrente protetor
+# Peso predito e conversão de volume
 
-Identificador: `peso-predito-volume-corrente`. Pacote independente da plataforma ELUCENIA, para navegador e Node.js.
+ELUCENIA · Felipe Guedes. Local publication candidate prepared from the current per-tool source. No publication or deployment has been performed.
 
-## Situação
+## Documentation in ten languages
 
-- Revisão: **restricted**. A saída principal é um ajuste ventilatório de 6 mL/kg, não apenas peso predito. O protocolo inclui elegibilidade, pressão de platô e acompanhamento. Suspender até revisão clínica ou separar um calculador estritamente antropométrico de PBW.
-- Execução: **desativada; o adaptador retorna REVIEW_REQUIRED**.
-- Validação clínica independente: **não realizada**. Os testes abaixo verificam aritmética e transporte dos campos.
-- 3 casos de referência em `examples.json`, conferidos por `test.cjs`. Verificação aritmética independente da fórmula (reimplementação a partir da literatura, entradas aleatórias): **pendente**.
-- Dados: o exemplo funciona localmente, sem rede, armazenamento ou identificação de pacientes.
+- [Português (Brasil)](documentation/pt-BR.md) · [ELUCENIA](https://elucenia.org/pt-br/ferramentas/peso-predito-volume-corrente)
+- [English](documentation/en.md) · [ELUCENIA](https://elucenia.org/en/tools/peso-predito-volume-corrente)
+- [Español](documentation/es.md) · [ELUCENIA](https://elucenia.org/es/herramientas/peso-predito-volume-corrente)
+- [Français](documentation/fr.md) · [ELUCENIA](https://elucenia.org/fr/outils/peso-predito-volume-corrente)
+- [Deutsch](documentation/de.md) · [ELUCENIA](https://elucenia.org/de/werkzeuge/peso-predito-volume-corrente)
+- [Italiano](documentation/it.md) · [ELUCENIA](https://elucenia.org/it/strumenti/peso-predito-volume-corrente)
+- [العربية](documentation/ar.md) · [ELUCENIA](https://elucenia.org/ar/tools/peso-predito-volume-corrente)
+- [中文](documentation/zh.md) · [ELUCENIA](https://elucenia.org/zh/tools/peso-predito-volume-corrente)
+- [日本語](documentation/ja.md) · [ELUCENIA](https://elucenia.org/ja/tools/peso-predito-volume-corrente)
+- [हिन्दी](documentation/hi.md) · [ELUCENIA](https://elucenia.org/hi/tools/peso-predito-volume-corrente)
 
-## Uso no Node.js
+The README introduction is in English; the linked usage, field, method, limits, source and review documentation is available in each listed language. Bibliographic titles and schema identifiers retain their source identity.
 
-```js
-const { calculate } = require('./calculator.js');
-const example = require('./examples.json')[0];
-console.log(calculate(example.input));
-```
+## Run locally
 
-Execute `node test.cjs` (ou `npm test`) para conferir os exemplos. Abra `index.html` para usar a versão local do navegador. Não há dependências npm.
+Serve this directory with a static HTTP server and open index.html. The Node entry is calculator.js. Run node test.cjs to replay all 3 existing synthetic reference cases against the packaged current method. Calculation uses a fixed per-tool local module graph; it needs no API key, remote calculation service, app tree or database.
 
-## Contrato
+## Edition and evidence
 
-`calculate(input)` recebe um objeto, devolve `{id, main, label, raw, clinicalValidation}` ou `{error, code, field?}`. Consulte `tool.json` e `metadata.fields` para nomes, unidades, opções e intervalos. Números aceitam valores finitos ou strings numéricas; opções precisam corresponder às chaves documentadas. Campos obrigatórios vazios, booleanos inválidos, valores fora de intervalo e resultados não finitos são rejeitados. Somente checkbox omitido representa falso; um campo numérico ou uma opção obrigatória nunca é preenchido automaticamente.
+ARDS Network 2000; PBW e conversão por coeficiente informado
 
-Interpretações, ordens terapêuticas e tabelas herdadas não são retornadas pelo adaptador. Classificações e valores ainda dependem da população e das limitações da fonte.
+examples.json contains current documented inputs/expected values. results.json records fresh source Node and packaged browser VM parity. evidence/http-reference-replay.json retains the corresponding completed HTTP replay against r5 build RYDdJbZxqrM8sgoyKEQc-. This is arithmetic and transport evidence; it is not full method/population, clinical or professional-language approval. The full independent bank is not included.
 
-## Fórmula / versão
+## License and attribution
 
-Peso predito: 50 (masculino) ou 45,5 (feminino) + 0,91 × (altura em cm − 152,4). Multiplicar por um volume/kg é somente um componente de protocolo ventilatório.
-
-A transcrição acima documenta o acervo de origem e pode requerer atualização. Revisão documental: https://biolincc.nhlbi.nih.gov/studies/ardsnet/
-
-## Condições e limites
-
-Calcula o peso predito pela altura e pelo sexo, que é a referência para o volume corrente na ventilação protetora, e não o peso real.
-
-Confirme população, exclusões, unidades, versão e diretriz aplicável ao país e serviço. O resultado não deve ser utilizado isoladamente para diagnóstico, alta ou prescrição. O pacote não representa certificação clínica, aprovação regulatória ou indicação para toda população. Veja a revisão completa em `tool.json`.
-
-## Fontes originais
-
-- [Acute Respiratory Distress Syndrome Network. Ventilation with lower tidal volumes as compared with traditional tidal volumes for acute lung injury and the acute respiratory distress syndrome. N Engl J Med, 2000.](https://doi.org/10.1056/NEJM200005043421801)
-- [Fan E et al. An Official American Thoracic Society/European Society of Intensive Care Medicine/Society of Critical Care Medicine Clinical Practice Guideline: Mechanical Ventilation in Adult Patients with Acute Respiratory Distress Syndrome. Am J Respir Crit Care Med, 2017.](https://doi.org/10.1164/rccm.201703-0548ST)
-
-## Exemplos e rastreabilidade
-
-`examples.json` preserva `originalInput`, expectativa e entrada explícita do exemplo. Não foi necessário expandir opções zero nos exemplos.
-
-## O que esta ferramenta não faz
-
-- Não diagnostica, não prescreve e não substitui a avaliação de um médico. O resultado é a reprodução técnica de uma fórmula ou escore publicado.
-- Não envia dados a lugar nenhum: roda no navegador ou no Node.js, sem rede, sem telemetria, sem armazenamento.
-- Não guarda nem identifica pacientes. Não use com dados identificáveis fora de um ambiente que você controla.
-- Não tem validação clínica independente nem aprovação regulatória (ver "Situação").
-
-## Autoria e licença
-
-Criado e mantido por **Felipe Guedes** (Engenheiro de Software e Arquiteto de Sistemas, Toledo, Paraná, Brasil) para a **ELUCENIA**, uma cadeia médica e científica global para acelerar a descoberta. Criado em 2026-09-25 na organização [github.com/Elucenia](https://github.com/Elucenia).
-
-Licença **Apache-2.0** (arquivo `LICENSE`): você pode usar, copiar, modificar e embutir este código no seu site ou sistema, inclusive comercial, desde que mantenha o arquivo `NOTICE` e o aviso de copyright e declare as modificações. A licença cobre o código deste pacote; instrumentos, questionários, tabelas, traduções e marcas citados nas fontes mantêm os direitos dos seus titulares (ver `NOTICE`). Detalhes em `AUTHORSHIP.md`, `CITATION.cff`, `SECURITY.md` e `CONTRIBUTING.md`. Contato: contato@elucenia.org.
+Existing payload notices and protected attribution references remain preserved. METHOD-CODE-LICENSE.txt and METHOD-CODE-NOTICE.md, when present, preserve the current integration package notices verbatim. publication-provenance.json identifies their exact sources and any historical Apache/current MIT declaration difference. No new instrument, questionnaire, table, translation, publication, data or trademark rights are granted. The candidate requires source-specific rights and fresh remote/protected-file review before distribution.

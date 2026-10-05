@@ -1,0 +1,40 @@
+[
+  {
+    "id": "peso-predito-volume-corrente",
+    "title": "Peso predito e volume corrente protetor",
+    "fields": [
+      [
+        "sexo",
+        "Sexo",
+        "radio",
+        {
+          "opts": {
+            "M": "Masculino",
+            "F": "Feminino"
+          }
+        }
+      ],
+      [
+        "altura",
+        "Altura",
+        "num",
+        {
+          "min": 120,
+          "max": 220,
+          "unit": "cm",
+          "ph": "170"
+        }
+      ]
+    ],
+    "sources": [
+      [
+        "Acute Respiratory Distress Syndrome Network. Ventilation with lower tidal volumes as compared with traditional tidal volumes for acute lung injury and the acute respiratory distress syndrome. N Engl J Med, 2000.",
+        "https://doi.org/10.1056/NEJM200005043421801"
+      ],
+      [
+        "Fan E et al. An Official American Thoracic Society/European Society of Intensive Care Medicine/Society of Critical Care Medicine Clinical Practice Guideline: Mechanical Ventilation in Adult Patients with Acute Respiratory Distress Syndrome. Am J Respir Crit Care Med, 2017.",
+        "https://doi.org/10.1164/rccm.201703-0548ST"
+      ]
+    ]
+  }
+]

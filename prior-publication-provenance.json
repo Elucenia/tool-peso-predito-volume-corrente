@@ -1,0 +1,149 @@
+{
+  "stage": "prepared-not-published",
+  "id": "peso-predito-volume-corrente",
+  "repository": "Elucenia/tool-peso-predito-volume-corrente",
+  "build": {
+    "id": "6QpMzbnUBE2fep9nyJzTM",
+    "directory": ".next-private-final36",
+    "receiptSha256": "05823c22753741cd9947b8a5edad0c3f232f5cc4e935d1015837524ac6c34d0b"
+  },
+  "baseline": {
+    "parentCommitSha": "d322b692a663a80ad59a431b50ace5e49350f14b",
+    "baseTreeSha": "85d3ed219e0fa4d47458d8c5f4340817e3072cd2",
+    "indexBlobSha": "6d7602772ddae7baddb27b58bc5088fa72a5343d",
+    "protectedFiles": {
+      "LICENSE": {
+        "path": "LICENSE",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+        "size": 11358,
+        "url": "https://api.github.com/repos/Elucenia/tool-peso-predito-volume-corrente/git/blobs/d645695673349e3947e8e5ae42332d0ac3164cd7"
+      },
+      "NOTICE": {
+        "path": "NOTICE",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6253dfc71c60c36d33d83723bdf6893683897497",
+        "size": 1676,
+        "url": "https://api.github.com/repos/Elucenia/tool-peso-predito-volume-corrente/git/blobs/6253dfc71c60c36d33d83723bdf6893683897497"
+      },
+      "AUTHORSHIP.md": {
+        "path": "AUTHORSHIP.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "dfaa040dcc2dd4d7b2b7a40aeb8145d870949261",
+        "size": 3363,
+        "url": "https://api.github.com/repos/Elucenia/tool-peso-predito-volume-corrente/git/blobs/dfaa040dcc2dd4d7b2b7a40aeb8145d870949261"
+      },
+      "CITATION.cff": {
+        "path": "CITATION.cff",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ec0cfde93391b0ba9e4acb176ebefcb718928225",
+        "size": 967,
+        "url": "https://api.github.com/repos/Elucenia/tool-peso-predito-volume-corrente/git/blobs/ec0cfde93391b0ba9e4acb176ebefcb718928225"
+      },
+      "SECURITY.md": {
+        "path": "SECURITY.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "44eafb996937916cbe53e24fa9c5208fe03d5767",
+        "size": 894,
+        "url": "https://api.github.com/repos/Elucenia/tool-peso-predito-volume-corrente/git/blobs/44eafb996937916cbe53e24fa9c5208fe03d5767"
+      },
+      "CONTRIBUTING.md": {
+        "path": "CONTRIBUTING.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1df29f69b899d7b8ee9534c9d84a06d4ab268b2e",
+        "size": 1479,
+        "url": "https://api.github.com/repos/Elucenia/tool-peso-predito-volume-corrente/git/blobs/1df29f69b899d7b8ee9534c9d84a06d4ab268b2e"
+      },
+      ".github/workflows/ci.yml": {
+        "path": ".github/workflows/ci.yml",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7d3f2f34aa2e948d30695d82d64361467d9e6485",
+        "size": 279,
+        "url": "https://api.github.com/repos/Elucenia/tool-peso-predito-volume-corrente/git/blobs/7d3f2f34aa2e948d30695d82d64361467d9e6485"
+      },
+      ".gitattributes": {
+        "path": ".gitattributes",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6313b56c57848efce05faa7aa7e901ccfc2886ea",
+        "size": 19,
+        "url": "https://api.github.com/repos/Elucenia/tool-peso-predito-volume-corrente/git/blobs/6313b56c57848efce05faa7aa7e901ccfc2886ea"
+      },
+      ".gitignore": {
+        "path": ".gitignore",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e375bd25cf1a574310ac4c7af0299884556e81e1",
+        "size": 42,
+        "url": "https://api.github.com/repos/Elucenia/tool-peso-predito-volume-corrente/git/blobs/e375bd25cf1a574310ac4c7af0299884556e81e1"
+      }
+    }
+  },
+  "methodSourceModules": [
+    "calculator.js",
+    "runtime/restored-methods.cjs",
+    "runtime/restoration-original-tools.json"
+  ],
+  "implementationBrowserSha256": "f4c496b4d50b201231d7fbfed0d556d74583edddc10690056c240d17f4e3384e",
+  "localeDataSha256": "b30434db5491246834bcedf5a0d29a666693eaf96cc3fe81e21958e453c31478",
+  "originalStyleSha256": "8fd25e9dc1c0980e3b39b2375d36b96276eec3cbc24284cbc3cc01dc00a67a5c",
+  "originalIndexSha256": "64ef82df052d9d656237b87f2bd79c68dc98f284376233cf48e7dd657758d433",
+  "example": {
+    "label": "Current source-owned complete UI/API fixture",
+    "input": {
+      "sexo": "M",
+      "altura": 170,
+      "mlkg": 6
+    },
+    "expected": {
+      "raw": {
+        "pbw": 66.016,
+        "volume": 396.096,
+        "mlkg": 6
+      },
+      "main": "66,02",
+      "tol": 1e-9
+    },
+    "obtained": {
+      "id": "peso-predito-volume-corrente",
+      "main": [
+        "66,02",
+        "kg"
+      ],
+      "label": "Peso corporal predito",
+      "raw": {
+        "pbw": 66.01599999999999,
+        "volume": 396.09599999999995,
+        "mlkg": 6
+      },
+      "methodVersion": "ARDS Network 2000; PBW e conversão por coeficiente informado",
+      "clinicalValidation": "not-performed"
+    },
+    "scope": "Source-owned example Node/browser wiring parity; not a new clinical oracle"
+  },
+  "clinicalApproval": "not-performed",
+  "professionalLanguageApproval": "not-performed",
+  "sourceRightsApproval": "not-performed",
+  "documentationLocales": [
+    "pt-BR",
+    "en",
+    "es",
+    "fr",
+    "de",
+    "it",
+    "ar",
+    "zh",
+    "ja",
+    "hi"
+  ],
+  "documentationTemplateSha256": "ae4c41b39ab92a14adbfab83b946751a75c8168b5927e1f808d1c629ec032ea4",
+  "appWrites": false,
+  "externalMutations": false
+}
